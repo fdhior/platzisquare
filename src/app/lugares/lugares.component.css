@@ -1,0 +1,10 @@
+agm-map {
+  height: 300px;
+}
+
+.padding {
+  padding: 10px;
+  margin-bottom: 10px;
+  background: linear-gradient(#fbff24, #dfdb12);
+  /* background-image: var(--bs-gradient); */
+}

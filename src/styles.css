@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+.breadcrumbText {
+  margin-bottom: 0;
+}
+
+#cuadrado {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+}
+

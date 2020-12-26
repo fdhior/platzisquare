@@ -1,37 +1,37 @@
 import { Component } from '@angular/core';
-
+import { AutorizacionService } from './services/autorizacion.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Platzisquare';
-  lugares: any = [
-    {plan: 'pagado', cercania: 1, distancia: 1, active: true, nombre: 'Floreria La Gadenía'},
-    {plan: 'gratuito', cercania: 1, distancia: 1.8, active: true, nombre: 'Donas la pasadita'},
-    {plan: 'gratuito', cercania: 2, distancia: 5, active: true, nombre: 'Veterinaria Huellitas Felices'},
-    {plan: 'gratuito', cercania: 3, distancia: 10, active: false, nombre: 'Sushi Sushiroll'},
-    {plan: 'pagado', cercania: 3, distancia: 35, active: true, nombre: 'Hotel la Gracia'},
-    {plan: 'gratuito', cercania: 3, distancia: 120, active: false, nombre: 'Zapatería el Clavo'}
-  ];
 
-  lat: number = 51.5007325;
-  lng: number = -0.1268141;
+  loggedIn = false;
 
+  loggedUser: any = null;
 
-  /* a = 3;
-  b = 5;
-  listo = false;
-  nombre: string =''; */
+  constructor(
+    private autorizacionService: AutorizacionService
+  ) {
 
-  constructor() {
-    /*setTimeout(() => {
-      this.listo = true;
-    }, 3000); */
+    this.autorizacionService.isLogged()
+      .subscribe((result) => {
+        if(result && result.uid) {
+          this.loggedIn = true;
+          setTimeout(() => {
+            this.loggedUser = this.autorizacionService.getUser().currentUser.email;
+            console.log(this.loggedUser);
+          }, 500);
+        } else {
+          this.loggedIn = false;
+        }
+      }, (error) => {
+        this.loggedIn = false;
+      });
   }
 
-  /* hacerAlgo() {
-    alert('Haciendo algo');
-  } */
+  logout() {
+    this.autorizacionService.logout();
+  }
 }

@@ -1,0 +1,40 @@
+<div class="card card-body bg-light">
+  <p class="breadcrumbText">
+    <a routerLink="/lugares">Lugares</a> / Crear Lugar
+  </p>
+</div>
+<div class="container" *ngIf="lugar || lugar == null">
+  <label>Nombre</label>
+  <input class="form-control" type="text" [(ngModel)]="lugar.nombre" />
+  <br />
+  <label>Distancia</label>
+  <input class="form-control" type="number" [(ngModel)]="lugar.distancia" />
+  <br />
+  <label>Cercania</label>
+  <input class="form-control" type="number" [(ngModel)]="lugar.cercania" />
+  <br />
+  <label>Descripción</label>
+  <textarea class="form-control" [(ngModel)]="lugar.descripcion"></textarea>
+  <br />
+  <label>Plan</label>
+  <input class="form-control" type="text" [(ngModel)]="lugar.plan" />
+  <h3>Datos de Ubicación</h3>
+  <div class="card card-body bg-light">
+    <form>
+      <h3>Buscar Dirección en Google Maps</h3>
+      <input class="form-control" [formControl]="searchField">
+    </form>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let result of results$ | async" (click)="seleccionarDireccion(result)">{{ result.formatted_address }} </li>
+    </ul>
+  </div>
+  <label>Calle y Número</label>
+  <input class="form-control" type="text" [(ngModel)]="lugar.calle" />
+  <label>Ciudad</label>
+  <input class="form-control" type="text" [(ngModel)]="lugar.ciudad" />
+  <label>País</label>
+  <input class="form-control" type="text" [(ngModel)]="lugar.pais" />
+  <hr />
+  <a class="btn btn-primary" (click)="guardarLugar()">Enviar</a>
+  <a class="btn btn-default" routerLink="/lugares">Cancelar</a>
+</div>

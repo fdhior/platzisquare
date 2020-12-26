@@ -1,0 +1,17 @@
+<div class="card card-body bg-light">
+  <p class="breadcrumbText">
+    <a routerLink="/lugares">Lugares</a> / {{ lugar.nombre }}
+  </p>
+</div>
+<div class="container">
+  <h1>{{ lugar.nombre }}</h1>
+  <hr />
+  <small>{{ lugar.distancia}} km</small>
+  <br />
+  <div class="card card-body bg-light">
+    <p>
+      {{ lugar.description }}
+    </p>
+    <b>Plan: {{ lugar.plan }} </b>
+  </div>
+</div>
