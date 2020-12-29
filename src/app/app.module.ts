@@ -60,7 +60,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCYuuwMJckphtHiPByphNT565rKLXTM92Q'
+      apiKey: 'None'
     }),
     RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(environment.firebase),
